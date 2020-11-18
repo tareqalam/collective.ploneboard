@@ -5,7 +5,7 @@ from persistent import Persistent
 from z3c.form.field import Fields
 
 from zope import interface
-
+from zope.interface import implementer
 from zope.annotation import factory
 from zope.component import adapts
 from zope.interface import Interface
@@ -26,9 +26,8 @@ class ICommentExtenderFields(Interface):
         required=False,
     )
 
-
+@implementer(ICommentExtenderFields)
 class CommentExtenderFields(Persistent):
-    interface.implements(ICommentExtenderFields)
     adapts(Comment)
     attachment = u""
 
